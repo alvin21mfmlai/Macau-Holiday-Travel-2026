@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Macau Family Trip</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Day-by-day plan for our Macau trip, 22–26 December 2026, with bookings and free time marked.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&family=Young+Serif&display=swap">
+<style>
+/* Layout: one reading column. Sticky day chips, a to-scale week strip (5am-10pm) where yellow = free time,
+   then one section per day headed by a Macau street-plaque tile. */
+:root {
+  --bg:#F3F6FB; --surface:#FFFFFF; --ink:#13213E; --muted:#55627E; --line:#D7DEEA; --wave:#CBD6E8;
+  --cobalt:#1C4C9C; --booked:#1C4C9C; --on-booked:#FFFFFF;
+  --plan:#D9E4F6; --travel:#C9D0DD;
+  --free:#F3BD43; --on-free:#3B2900; --free-soft:#FFF2CF; --free-ink:#7A5300;
+  --red:#B3261E; --red-soft:#FBE4E1;
+  --tile:#FFFFFF;
+  --f-display:"Young Serif","Songti TC","Noto Serif TC",Georgia,serif;
+  --f-body:"Atkinson Hyperlegible","PingFang TC","Noto Sans TC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg:#0D1424; --surface:#131C31; --ink:#E5EAF4; --muted:#9AA6C1; --line:#26314B; --wave:#1D2843;
+  --cobalt:#8EB0F0; --booked:#3D6BC4; --on-booked:#FFFFFF;
+  --plan:#22345A; --travel:#323D57;
+  --free:#E8B23E; --on-free:#231700; --free-soft:#30270F; --free-ink:#F2D27F;
+  --red:#F28B82; --red-soft:#3A1B1A;
+  --tile:#131C31; color-scheme:dark;
+} }
+:root[data-theme="dark"] {
+  --bg:#0D1424; --surface:#131C31; --ink:#E5EAF4; --muted:#9AA6C1; --line:#26314B; --wave:#1D2843;
+  --cobalt:#8EB0F0; --booked:#3D6BC4; --on-booked:#FFFFFF;
+  --plan:#22345A; --travel:#323D57;
+  --free:#E8B23E; --on-free:#231700; --free-soft:#30270F; --free-ink:#F2D27F;
+  --red:#F28B82; --red-soft:#3A1B1A;
+  --tile:#131C31; color-scheme:dark;
+}
+* { box-sizing:border-box }
+html { scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px) }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto } }
+body { background:var(--bg); color:var(--ink); font-family:var(--f-body); font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased }
+body::before { content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg) }
+a { color:var(--cobalt); text-underline-offset:3px }
+a:focus-visible { outline:2px solid var(--cobalt); outline-offset:2px; border-radius:4px }
+h1,h2,h3 { text-wrap:balance; margin:0 }
+p { margin:0 }
+.wrap { max-width:860px; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)) }
+
+/* Hero */
+.hero { padding-block:44px 0 }
+.eyebrow { font-family:var(--f-mono); font-size:13px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--cobalt) }
+.hero h1 { font-family:var(--f-display); font-weight:400; font-size:clamp(2.5rem, 8vw, 4.25rem); line-height:1.02; margin-top:10px; letter-spacing:-.01em }
+.hero h1 .zh { display:block; font-size:.42em; letter-spacing:.3em; color:var(--muted); margin-top:10px }
+.lede { font-size:1.125rem; max-width:60ch; margin-top:16px; color:var(--ink) }
+.countdown { display:inline-block; margin-top:16px; font-family:var(--f-mono); font-weight:600; font-size:14px; background:var(--free); color:var(--on-free); padding:4px 10px; border-radius:6px }
+.countdown:empty { display:none }
+.facts { display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:18px 28px; margin:28px 0 0; padding-top:20px; border-top:1px solid var(--line) }
+.facts div { min-width:0 }
+.facts dt { font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted) }
+.facts dd { margin:4px 0 0 }
+.facts .mono { font-family:var(--f-mono); font-size:14px; font-weight:500 }
+.calcada { height:36px; margin-top:36px; background:var(--wave); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='36' viewBox='0 0 48 36'%3E%3Cg fill='none' stroke='black' stroke-width='4.5'%3E%3Cpath d='M0 6 Q12 -2 24 6 T48 6'/%3E%3Cpath d='M0 18 Q12 10 24 18 T48 18'/%3E%3Cpath d='M0 30 Q12 22 24 30 T48 30'/%3E%3C/g%3E%3C/svg%3E") repeat-x left center / 48px 36px; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='36' viewBox='0 0 48 36'%3E%3Cg fill='none' stroke='black' stroke-width='4.5'%3E%3Cpath d='M0 6 Q12 -2 24 6 T48 6'/%3E%3Cpath d='M0 18 Q12 10 24 18 T48 18'/%3E%3Cpath d='M0 30 Q12 22 24 30 T48 30'/%3E%3C/g%3E%3C/svg%3E") repeat-x left center / 48px 36px }
+
+/* Sticky day chips */
+.daynav { position:sticky; top:env(safe-area-inset-top,0px); z-index:6; background:var(--bg); border-bottom:1px solid var(--line) }
+.daynav .wrap { display:flex; gap:6px; overflow-x:auto; padding-block:8px; scrollbar-width:none }
+.daynav .wrap::-webkit-scrollbar { display:none }
+.daynav a { flex:0 0 auto; display:flex; flex-direction:column; align-items:center; padding:5px 12px; border-radius:8px; text-decoration:none; color:var(--ink); line-height:1.2 }
+.daynav a:hover { background:var(--surface) }
+.daynav a span { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted) }
+.daynav a b { font-family:var(--f-mono); font-size:14px; font-weight:600 }
+.daynav a.is-today { background:var(--free); }
+.daynav a.is-today span, .daynav a.is-today b { color:var(--on-free) }
+
+/* Section shells */
+main > section { padding-block:44px }
+.sec-h { font-family:var(--f-display); font-weight:400; font-size:clamp(1.6rem, 4.5vw, 2.1rem) }
+.sec-intro { color:var(--muted); margin-top:8px; max-width:62ch }
+
+/* Week strip */
+.legend { display:flex; flex-wrap:wrap; gap:8px 18px; margin:18px 0 20px; font-size:14px; padding:0; list-style:none }
+.legend li { display:flex; align-items:center; gap:8px }
+.sw { width:16px; height:16px; border-radius:4px; flex:0 0 auto }
+.sw.free { background:var(--free) } .sw.booked { background:var(--booked) } .sw.plan { background:var(--plan) }
+.sw.travel { background:var(--travel) } .sw.opt { border:2px dashed var(--cobalt) }
+.sw.tilde { display:grid; place-items:center; font-family:var(--f-mono); font-weight:600; font-size:15px; color:var(--muted) }
+.chart { display:grid; grid-template-columns:44px repeat(5, minmax(0,1fr)); column-gap:8px; row-gap:8px }
+.ch-head { display:flex; flex-direction:column; align-items:center; text-decoration:none; color:var(--ink); line-height:1.15 }
+.ch-head span { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted) }
+.ch-head b { font-family:var(--f-display); font-weight:400; font-size:22px }
+.ch-axis, .ch-track { position:relative; height:380px }
+.ch-axis span { position:absolute; right:2px; transform:translateY(-50%); font-family:var(--f-mono); font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums }
+.ch-track { background:var(--surface); border:1px solid var(--line); border-radius:8px; overflow:hidden }
+.ch-track > i { position:absolute; left:0; right:0; height:1px; background:var(--line) }
+.lane { position:absolute; top:0; bottom:0 }
+.lane.a { left:0; width:36%; border-right:1px dashed var(--line) }
+.lane.b { left:36%; right:0 }
+.blk { position:absolute; left:4px; right:4px; border-radius:4px; display:flex; align-items:center; justify-content:center; overflow:hidden; font-family:var(--f-mono); font-size:11px; font-weight:600 }
+.lane .blk { left:3px; right:3px }
+.blk.t-free { background:var(--free); color:var(--on-free) }
+.blk.t-free.eve { background:linear-gradient(var(--free), color-mix(in srgb, var(--free) 15%, transparent)); align-items:flex-start; padding-top:4px }
+.blk.t-booked { background:var(--booked) }
+.blk.t-plan { background:var(--plan) }
+.blk.t-travel { background:var(--travel) }
+.blk.t-opt { background:transparent; border:2px dashed var(--cobalt); left:9px; right:9px; z-index:2 }
+.ch-total { text-align:center; line-height:1.2 }
+.ch-total b { display:block; font-family:var(--f-mono); font-weight:600; font-size:14px; font-variant-numeric:tabular-nums }
+.ch-total span { font-size:11px; color:var(--muted) }
+.ch-total.ax { text-align:right; padding-top:2px }
+.ch-total.ax span { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase }
+
+/* Day sections */
+.day { border-top:1px solid var(--line) }
+.dayhead { display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px }
+.plaque { display:inline-flex; flex-direction:column; align-items:center; gap:3px; padding:10px 20px; background:var(--tile); border:2px solid var(--cobalt); border-radius:6px; box-shadow:inset 0 0 0 3px var(--tile), inset 0 0 0 4px var(--cobalt); color:var(--cobalt) }
+.plaque .zh { font-family:var(--f-display); font-size:15px; letter-spacing:.14em }
+.plaque .pt { font-family:var(--f-display); font-size:12.5px; letter-spacing:.1em; text-transform:uppercase }
+.xmas { font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--red); border:1.5px solid currentColor; border-radius:999px; padding:3px 10px }
+.today { font-family:var(--f-mono); font-size:13px; font-weight:600; background:var(--free); color:var(--on-free); border-radius:6px; padding:4px 10px }
+.day h2 { font-family:var(--f-display); font-weight:400; font-size:clamp(1.7rem, 5vw, 2.3rem); line-height:1.12; margin-top:18px }
+.daynote { margin-top:8px; color:var(--muted); max-width:62ch }
+.freebox { margin-top:20px; background:var(--free-soft); border-radius:10px; padding:14px 16px }
+.freebox h3 { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--free-ink) }
+.freebox ul { list-style:none; margin:8px 0 0; padding:0; display:grid; gap:6px }
+.freebox li { display:grid; grid-template-columns:minmax(118px, max-content) minmax(0,1fr); gap:4px 14px; align-items:baseline }
+.freebox b { font-family:var(--f-mono); font-weight:600; font-size:14.5px; white-space:nowrap; font-variant-numeric:tabular-nums }
+.freebox .who { color:var(--muted); font-size:14px }
+.freebox li.none b { color:var(--muted) }
+.flag { margin-top:14px; padding:12px 14px; border:1.5px solid var(--red); border-radius:10px; background:var(--red-soft); font-size:15px; max-width:70ch }
+.flag b { color:var(--red) }
+
+/* Timeline */
+.tl { --tcol:96px; --dcol:18px; --gap:12px; --pad:10px; list-style:none; margin:22px 0 0; padding:0; position:relative }
+.tl::before { content:""; position:absolute; left:calc(var(--pad) + var(--tcol) + var(--gap) + var(--dcol) / 2 - 1px); top:14px; bottom:14px; width:2px; background:var(--line) }
+.it { display:grid; grid-template-columns:var(--tcol) var(--dcol) minmax(0,1fr); column-gap:var(--gap); padding:12px var(--pad); position:relative; border-radius:10px }
+.when { display:flex; flex-direction:column; align-items:flex-end; text-align:right; font-family:var(--f-mono); font-variant-numeric:tabular-nums; line-height:1.3; padding-top:1px }
+.when .t { font-size:15px; font-weight:600 }
+.when .e { font-size:12.5px; color:var(--muted); font-weight:500 }
+.dot { width:14px; height:14px; border-radius:50%; margin:4px auto 0; background:var(--surface); border:2px solid var(--cobalt); position:relative; z-index:1 }
+.what { min-width:0 }
+.ttl { font-weight:700; font-size:17px; line-height:1.35; display:flex; flex-wrap:wrap; align-items:center; gap:4px 8px }
+.det { color:var(--muted); font-size:15px; margin-top:2px }
+.addr { font-size:14px; margin-top:2px; color:var(--muted) }
+.links { margin-top:4px; font-size:14.5px; display:flex; flex-wrap:wrap; gap:4px 14px }
+.kind { display:block; font-size:11.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--free-ink); margin-bottom:1px }
+.pill { font-size:12px; font-weight:700; letter-spacing:.02em; padding:2px 8px; border-radius:999px; line-height:1.4; white-space:nowrap }
+.p-booked { background:var(--booked); color:var(--on-booked) }
+.p-warn { background:var(--red-soft); color:var(--red); border:1px solid var(--red) }
+.p-opt { border:1.5px dashed var(--cobalt); color:var(--cobalt) }
+.it.t-booked .dot { background:var(--booked); border-color:var(--booked) }
+.it.t-free { background:var(--free-soft) }
+.it.t-free .dot { background:var(--free); border-color:var(--free) }
+.it.t-opt .dot { border-style:dashed }
+.it.t-travel { padding-block:6px }
+.it.t-travel .dot { width:8px; height:8px; margin-top:7px; border:0; background:var(--travel) }
+.it.t-travel .ttl { font-weight:400; font-size:15px; color:var(--muted) }
+.it.t-travel .det { display:inline; font-size:14px }
+.it.t-travel .what { display:flex; flex-wrap:wrap; gap:0 8px; align-items:baseline }
+.it.t-travel .when .t { font-size:13.5px; font-weight:500; color:var(--muted) }
+.groups { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap:8px 28px; margin-top:22px }
+.group { min-width:0 }
+.group h3 { font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--cobalt); padding-bottom:8px; border-bottom:1px solid var(--line) }
+.group .tl { margin-top:10px }
+
+/* Bookings / lists */
+.rows { margin-top:22px }
+.rows h3 { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:26px 0 6px }
+.row { display:grid; grid-template-columns:150px minmax(0,1fr); gap:4px 18px; padding:12px 0; border-top:1px solid var(--line) }
+.row .dt { font-family:var(--f-mono); font-size:14.5px; font-weight:600; font-variant-numeric:tabular-nums; line-height:1.4 }
+.row .dt span { display:block; color:var(--muted); font-weight:500 }
+.row .nm { font-weight:700; font-size:17px }
+.row .sub { color:var(--muted); font-size:15px }
+.row .tel { font-family:var(--f-mono); font-size:14px; user-select:all }
+.todo { list-style:none; padding:0; margin:22px 0 0; display:grid; gap:12px; counter-reset:q }
+.todo li { display:grid; grid-template-columns:28px minmax(0,1fr); gap:12px; padding:14px 16px; background:var(--surface); border:1px solid var(--line); border-radius:10px; counter-increment:q }
+.todo li::before { content:counter(q); width:28px; height:28px; border-radius:50%; display:grid; place-items:center; font-family:var(--f-mono); font-weight:600; font-size:14px; border:1.5px solid var(--cobalt); color:var(--cobalt) }
+.todo b { display:block }
+.todo p { color:var(--muted); font-size:15px; margin-top:2px }
+.ideas { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap:0 28px; margin-top:16px }
+.ideas div { padding:14px 0; border-top:1px solid var(--line); min-width:0 }
+.ideas b { display:block; font-size:16.5px }
+.ideas p { color:var(--muted); font-size:15px; margin-top:2px }
+
+@media (max-width: 600px) {
+  .chart { grid-template-columns:34px repeat(5, minmax(0,1fr)); column-gap:4px }
+  .ch-axis, .ch-track { height:340px }
+  .ch-axis span { font-size:10px }
+  .blk { font-size:10px; left:2px; right:2px }
+  .blk.t-opt { left:6px; right:6px }
+  .ch-head b { font-size:19px }
+  .ch-total b { font-size:12.5px }
+  .ch-total span { font-size:10px }
+  .tl { --tcol:82px; --dcol:14px; --gap:8px; --pad:8px }
+  .when .e { font-size:11.5px; white-space:nowrap }
+  .when .t { font-size:14px }
+  .ttl { font-size:16px }
+  .row { grid-template-columns:1fr }
+  .freebox li { grid-template-columns:1fr; gap:0 }
+  .plaque { padding:9px 14px }
+  .plaque .zh { font-size:14px; letter-spacing:.08em }
+  .plaque .pt { font-size:11.5px; letter-spacing:.06em }
+}
+
+/* Trip assistant (self-hosted build only) */
+:root { --shadow:rgba(13,20,36,.22) }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --shadow:rgba(0,0,0,.55) } }
+:root[data-theme="dark"] { --shadow:rgba(0,0,0,.55) }
+body { padding-bottom:88px }
+.chat-fab { position:fixed; right:calc(16px + env(safe-area-inset-right,0px)); bottom:calc(16px + env(safe-area-inset-bottom,0px)); z-index:20; display:flex; align-items:center; gap:8px; border:0; border-radius:999px; padding:12px 18px 12px 14px; background:var(--booked); color:var(--on-booked); font:700 15px/1 var(--f-body); cursor:pointer; box-shadow:0 6px 20px var(--shadow) }
+.chat-fab svg { width:20px; height:20px; flex:0 0 auto }
+.chat-fab:focus-visible, .chat button:focus-visible, .chat textarea:focus-visible, .chat input:focus-visible { outline:2px solid var(--cobalt); outline-offset:2px }
+.chat { position:fixed; right:calc(16px + env(safe-area-inset-right,0px)); bottom:calc(76px + env(safe-area-inset-bottom,0px)); z-index:21; width:min(400px, calc(100vw - 32px)); height:min(600px, calc(100dvh - 120px)); display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:0 18px 50px var(--shadow); overflow:hidden }
+.chat-head { display:flex; align-items:center; gap:12px; padding:14px 12px 14px 16px; border-bottom:1px solid var(--line) }
+.chat-head > div { flex:1; min-width:0 }
+.chat-head b { display:block; font-family:var(--f-display); font-weight:400; font-size:19px; line-height:1.2 }
+.chat-head span { font-size:12.5px; color:var(--muted) }
+.chat-x { border:0; background:transparent; color:var(--muted); width:40px; height:40px; border-radius:8px; font-size:24px; line-height:1; cursor:pointer }
+.chat-x:hover { background:var(--bg); color:var(--ink) }
+.chat-log { flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px; overscroll-behavior:contain }
+.chat-start p { color:var(--muted); font-size:15px }
+.chat-sugg { display:flex; flex-direction:column; align-items:flex-start; gap:8px; margin-top:14px }
+.chat-sugg button { border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:999px; padding:8px 14px; font:15px/1.3 var(--f-body); cursor:pointer; text-align:left }
+.chat-sugg button:hover { border-color:var(--cobalt); color:var(--cobalt) }
+.msg { max-width:88%; padding:10px 13px; border-radius:14px; font-size:15.5px; line-height:1.45; white-space:pre-wrap; overflow-wrap:anywhere }
+.msg.user { align-self:flex-end; background:var(--booked); color:var(--on-booked); border-bottom-right-radius:4px }
+.msg.assistant { align-self:flex-start; background:var(--plan); color:var(--ink); border-bottom-left-radius:4px }
+.msg.typing { color:var(--muted); font-style:italic }
+.msg.err { background:var(--red-soft); color:var(--red) }
+.chat-code { padding:12px 16px; border-top:1px solid var(--line); background:var(--free-soft); display:grid; gap:8px }
+.chat-code label { font-size:14px; font-weight:700; color:var(--free-ink) }
+.chat-code div { display:flex; gap:8px }
+.chat-code input { flex:1; min-width:0; border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:16px var(--f-body); background:var(--surface); color:var(--ink) }
+.chat-form { display:flex; gap:8px; align-items:flex-end; padding:12px; border-top:1px solid var(--line) }
+.chat-form textarea { flex:1; min-width:0; resize:none; border:1px solid var(--line); border-radius:12px; padding:11px 12px; font:16px/1.35 var(--f-body); background:var(--bg); color:var(--ink); max-height:120px }
+.chat-send { flex:0 0 auto; border:0; border-radius:12px; padding:0 16px; height:44px; background:var(--booked); color:var(--on-booked); font:700 15px var(--f-body); cursor:pointer }
+.chat-send:disabled { opacity:.5; cursor:default }
+@media (max-width: 600px) {
+  .chat { left:0; right:0; bottom:0; width:100%; height:88dvh; border-radius:16px 16px 0 0; border-bottom:0; padding-bottom:env(safe-area-inset-bottom,0px) }
+  .chat-on .chat-fab { display:none }
+}
+</style>
+
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Family trip · 22–26 Dec 2026</p>
+    <h1>Christmas in Macau<span class="zh" lang="zh-Hant">澳門聖誕之旅</span></h1>
+    <p class="lede">Five days, seven of us, based at Studio City in Cotai. Here’s what’s booked, what’s planned, and when you’re free.</p>
+    <p class="countdown" id="countdown"></p>
+    <dl class="facts">
+      <div><dt>Who</dt><dd>Theresa, Bin Hao, Alvin, Gwen, Alisa, Mum and Dad</dd></div>
+      <div><dt>Staying</dt><dd>Studio City, Cotai</dd></div>
+      <div><dt>Flying out</dt><dd><span class="mono">SQ874</span> · Tue 22 Dec<br><span class="mono">7:30am SIN → 11:20am HKG</span></dd></div>
+      <div><dt>Flying home</dt><dd><span class="mono">SQ899</span> · Sat 26 Dec, 9:05am<br><span class="mono">SQ893</span> · Sat 26 Dec, 3:45pm</dd></div>
+    </dl>
+  </div>
+  <div class="calcada" aria-hidden="true"></div>
+</header>
+
+<nav class="daynav" aria-label="Jump to a day"><div class="wrap"><a href="#day1" data-day="day1"><span>Tue</span><b>22 Dec</b></a><a href="#day2" data-day="day2"><span>Wed</span><b>23 Dec</b></a><a href="#day3" data-day="day3"><span>Thu</span><b>24 Dec</b></a><a href="#day4" data-day="day4"><span>Fri</span><b>25 Dec</b></a><a href="#day5" data-day="day5"><span>Sat</span><b>26 Dec</b></a><a href="#bookings"><span>All</span><b>Bookings</b></a><a href="#todo"><span>Still</span><b>To decide</b></a></div></nav>
+
+<main>
+<section id="glance">
+  <div class="wrap">
+    <h2 class="sec-h">Free time at a glance</h2>
+    <p class="sec-intro">Yellow is free time. Each column is one day from 7am to 10pm, with the daytime free hours added up underneath. Evenings after dinner are free too.</p>
+    <ul class="legend">
+      <li><span class="sw free"></span>Free time</li>
+      <li><span class="sw booked"></span>Booked (dinners, flights)</li>
+      <li><span class="sw plan"></span>Planned together</li>
+      <li><span class="sw travel"></span>Travel and check-in</li>
+      <li><span class="sw opt"></span>Optional</li>
+      <li><span class="sw tilde">~</span>Approximate time</li>
+    </ul>
+    <div class="chart" role="img" aria-label="Week view from 7am to 10pm. Daytime free time: 22 Dec 2h 25m, 23 Dec 4h 40m, 24 Dec 4h, 25 Dec 4h, 26 Dec 5h for the late-flight group."><div></div><a class="ch-head" href="#day1"><span>Tue</span><b>22</b></a><a class="ch-head" href="#day2"><span>Wed</span><b>23</b></a><a class="ch-head" href="#day3"><span>Thu</span><b>24</b></a><a class="ch-head" href="#day4"><span>Fri</span><b>25</b></a><a class="ch-head" href="#day5"><span>Sat</span><b>26</b></a><div class="ch-axis"><span style="top:6.67%">8am</span><span style="top:20.00%">10am</span><span style="top:33.33%">12pm</span><span style="top:46.67%">2pm</span><span style="top:60.00%">4pm</span><span style="top:73.33%">6pm</span><span style="top:86.67%">8pm</span><span style="top:100.00%">10pm</span></div><div class="ch-track"><i style="top:6.67%"></i><i style="top:20.00%"></i><i style="top:33.33%"></i><i style="top:46.67%"></i><i style="top:60.00%"></i><i style="top:73.33%"></i><i style="top:86.67%"></i><i style="top:100.00%"></i><div class="blk t-booked" style="top:3.33%;height:calc(25.56% - 2px)"><span></span></div><div class="blk t-plan" style="top:30.00%;height:calc(8.89% - 2px)"><span></span></div><div class="blk t-travel" style="top:40.00%;height:calc(8.33% - 2px)"><span></span></div><div class="blk t-travel" style="top:48.33%;height:calc(3.33% - 2px)"><span></span></div><div class="blk t-free" style="top:51.67%;height:calc(16.11% - 2px)"><span>2h25m</span></div><div class="blk t-travel" style="top:67.78%;height:calc(2.22% - 2px)"><span></span></div><div class="blk t-booked" style="top:70.00%;height:calc(10.00% - 2px)"><span></span></div><div class="blk t-plan" style="top:81.67%;height:calc(5.00% - 2px)"><span></span></div><div class="blk t-free eve" style="top:86.67%;height:calc(13.33% - 2px)"><span>eve</span></div></div><div class="ch-track"><i style="top:6.67%"></i><i style="top:20.00%"></i><i style="top:33.33%"></i><i style="top:46.67%"></i><i style="top:60.00%"></i><i style="top:73.33%"></i><i style="top:86.67%"></i><i style="top:100.00%"></i><div class="blk t-travel" style="top:10.00%;height:calc(1.67% - 2px)"><span></span></div><div class="blk t-plan" style="top:11.67%;height:calc(5.00% - 2px)"><span></span></div><div class="blk t-plan" style="top:16.67%;height:calc(20.00% - 2px)"><span></span></div><div class="blk t-plan" style="top:36.67%;height:calc(6.67% - 2px)"><span></span></div><div class="blk t-free" style="top:43.33%;height:calc(10.00% - 2px)"><span>1h30m</span></div><div class="blk t-travel" style="top:53.33%;height:calc(2.22% - 2px)"><span></span></div><div class="blk t-free" style="top:55.56%;height:calc(21.11% - 2px)"><span>3h10m</span></div><div class="blk t-opt" style="top:63.33%;height:calc(10.00% - 2px)"><span></span></div><div class="blk t-booked" style="top:76.67%;height:calc(10.00% - 2px)"><span></span></div><div class="blk t-free eve" style="top:86.67%;height:calc(13.33% - 2px)"><span>eve</span></div></div><div class="ch-track"><i style="top:6.67%"></i><i style="top:20.00%"></i><i style="top:33.33%"></i><i style="top:46.67%"></i><i style="top:60.00%"></i><i style="top:73.33%"></i><i style="top:86.67%"></i><i style="top:100.00%"></i><div class="blk t-plan" style="top:10.00%;height:calc(6.67% - 2px)"><span></span></div><div class="blk t-plan" style="top:16.67%;height:calc(20.00% - 2px)"><span></span></div><div class="blk t-plan" style="top:36.67%;height:calc(6.67% - 2px)"><span></span></div><div class="blk t-free" style="top:43.33%;height:calc(6.67% - 2px)"><span>1h</span></div><div class="blk t-travel" style="top:50.00%;height:calc(1.67% - 2px)"><span></span></div><div class="blk t-free" style="top:51.67%;height:calc(20.00% - 2px)"><span>3h</span></div><div class="blk t-travel" style="top:71.67%;height:calc(1.67% - 2px)"><span></span></div><div class="blk t-booked" style="top:73.33%;height:calc(11.67% - 2px)"><span></span></div><div class="blk t-plan" style="top:86.67%;height:calc(5.00% - 2px)"><span></span></div><div class="blk t-free eve" style="top:91.67%;height:calc(8.33% - 2px)"><span>eve</span></div></div><div class="ch-track"><i style="top:6.67%"></i><i style="top:20.00%"></i><i style="top:33.33%"></i><i style="top:46.67%"></i><i style="top:60.00%"></i><i style="top:73.33%"></i><i style="top:86.67%"></i><i style="top:100.00%"></i><div class="blk t-plan" style="top:6.67%;height:calc(8.33% - 2px)"><span></span></div><div class="blk t-travel" style="top:15.00%;height:calc(1.67% - 2px)"><span></span></div><div class="blk t-plan" style="top:16.67%;height:calc(13.33% - 2px)"><span></span></div><div class="blk t-free" style="top:30.00%;height:calc(16.67% - 2px)"><span>2h30m</span></div><div class="blk t-plan" style="top:46.67%;height:calc(6.67% - 2px)"><span></span></div><div class="blk t-travel" style="top:53.33%;height:calc(2.22% - 2px)"><span></span></div><div class="blk t-plan" style="top:55.56%;height:calc(6.11% - 2px)"><span></span></div><div class="blk t-free" style="top:61.67%;height:calc(10.00% - 2px)"><span>1h30m</span></div><div class="blk t-travel" style="top:71.67%;height:calc(1.67% - 2px)"><span></span></div><div class="blk t-booked" style="top:73.33%;height:calc(10.00% - 2px)"><span></span></div><div class="blk t-free eve" style="top:83.33%;height:calc(16.67% - 2px)"><span>eve</span></div><div class="blk t-opt" style="top:85.00%;height:calc(5.00% - 2px)"><span></span></div></div><div class="ch-track"><i style="top:6.67%"></i><i style="top:20.00%"></i><i style="top:33.33%"></i><i style="top:46.67%"></i><i style="top:60.00%"></i><i style="top:73.33%"></i><i style="top:86.67%"></i><i style="top:100.00%"></i><div class="blk t-free" style="top:3.33%;height:calc(16.67% - 2px)"><span>2h30m</span></div><div class="blk t-travel" style="top:20.00%;height:calc(10.00% - 2px)"><span></span></div><div class="blk t-travel" style="top:30.00%;height:calc(6.67% - 2px)"><span></span></div><div class="blk t-free" style="top:36.67%;height:calc(16.67% - 2px)"><span>2h30m</span></div><div class="blk t-travel" style="top:53.33%;height:calc(5.00% - 2px)"><span></span></div><div class="blk t-booked" style="top:58.33%;height:calc(27.22% - 2px)"><span></span></div></div><div class="ch-total ax"><span>Free</span></div><div class="ch-total"><b>2h 25m</b><span>+ evening</span></div><div class="ch-total"><b>4h 40m</b><span>+ evening</span></div><div class="ch-total"><b>4h</b><span>+ evening</span></div><div class="ch-total"><b>4h</b><span>+ evening</span></div><div class="ch-total"><b>5h</b><span>late flight</span></div></div>
+  </div>
+</section>
+
+
+<section class="day" id="day1" data-date="2026-12-22">
+  <div class="wrap">
+    <div class="dayhead">
+      <div class="plaque"><span class="zh" lang="zh-Hant">第一天 · 12月22日 星期二</span><span class="pt">Day 1 · Tuesday 22 December</span></div>
+      <span class="today" hidden>Today</span>
+    </div>
+    <h2>Arrival day</h2>
+    <p class="daynote">A long day of travel, so nobody heads out after dinner. Rest early.</p>
+    <div class="freebox"><h3>Free time today</h3><ul><li><b>~2:45–5:10pm</b><span>Walk around the hotel mall</span></li><li><b>From 8pm</b><span>Rest early</span></li></ul></div>
+    
+    <ol class="tl"><li class="it t-booked"><div class="when"><span class="t">7:30am</span><span class="e">to 11:20am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Fly Singapore → Hong Kong<span class="pill p-booked">Flight</span></p><p class="det">SQ874, lands 11:20am</p></div></li><li class="it t-plan"><div class="when"><span class="t">~11:30am</span><span class="e">to ~12:50pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Lunch at Hong Kong airport</p><p class="det">After clearing immigration</p></div></li><li class="it t-travel"><div class="when"><span class="t">1pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Transfer to Macau</p><p class="det">Leave the airport at 1pm</p></div></li><li class="it t-travel"><div class="when"><span class="t">~2:15pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Check in at Studio City</p></div></li><li class="it t-free"><div class="when"><span class="t">~2:45pm</span><span class="e">to ~5:10pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Walk around the hotel mall</p><p class="det">Rest, unpack or browse the shops at your own pace</p></div></li><li class="it t-travel"><div class="when"><span class="t">~5:10pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Head to The Londoner for dinner</p></div></li><li class="it t-booked"><div class="when"><span class="t">5:30pm</span><span class="e">to ~7pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Dinner at North Palace<span class="pill p-booked">Booked 5:30pm</span></p><p class="det">The Londoner Macao, table for 7</p><p class="links"><a href="https://hk.londonermacao.com/macau-restaurants/north-palace.html" target="_blank" rel="noopener">Restaurant page<span aria-hidden="true"> ↗</span></a></p></div></li><li class="it t-plan"><div class="when"><span class="t">~7:15pm</span><span class="e">to 8pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Golden Reel Ferris Wheel</p><p class="det">At Studio City. It closes at 8pm, so go straight after dinner.</p><p class="links"><a href="https://www.klook.com/en-SG/activity/750-golden-reel-ferris-wheel-macau/" target="_blank" rel="noopener">Golden Reel on Klook<span aria-hidden="true"> ↗</span></a></p></div></li><li class="it t-free"><div class="when"><span class="t">From 8pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Rest early</p><p class="det">Long day, so no going out tonight</p></div></li></ol>
+  </div>
+</section>
+<section class="day" id="day2" data-date="2026-12-23">
+  <div class="wrap">
+    <div class="dayhead">
+      <div class="plaque"><span class="zh" lang="zh-Hant">第二天 · 12月23日 星期三</span><span class="pt">Day 2 · Wednesday 23 December</span></div>
+      <span class="today" hidden>Today</span>
+    </div>
+    <h2>Senado Square and City of Dreams</h2>
+    <p class="daynote">Old Macau in the morning, then over to City of Dreams for the afternoon and dinner.</p>
+    <div class="freebox"><h3>Free time today</h3><ul><li><b>~1:30–3pm</b><span>Free time around Senado</span></li><li><b>~3:20–6:30pm</b><span>Super Fun Zone for chuchu</span></li><li><b>From ~8pm</b><span>Evening free</span></li></ul></div>
+    
+    <ol class="tl"><li class="it t-travel"><div class="when"><span class="t">~8:30am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Leave the hotel for Senado Square</p><p class="det">13 min</p></div></li><li class="it t-plan"><div class="when"><span class="t">~8:45am</span><span class="e">to ~9:30am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Breakfast at Cafe Kam Ma Lon</p><p class="det">Opens 7am, 3 min walk from Senado Square</p></div></li><li class="it t-plan"><div class="when"><span class="t">~9:30am</span><span class="e">to ~12:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Senado Square</p><p class="det">Sightseeing and a walk around</p></div></li><li class="it t-plan"><div class="when"><span class="t">~12:30pm</span><span class="e">to ~1:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Lunch near Senado</p><p class="det">Chinese or Portuguese, to decide on the day</p></div></li><li class="it t-free"><div class="when"><span class="t">~1:30pm</span><span class="e">to 3pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Free time around Senado</p><p class="det">Explore or shop at your own pace. Regroup to leave at 3pm.</p></div></li><li class="it t-travel"><div class="when"><span class="t">3pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Leave Senado for City of Dreams</p><p class="det">17 min</p></div></li><li class="it t-free"><div class="when"><span class="t">~3:20pm</span><span class="e">to 6:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Super Fun Zone for chuchu</p><p class="det">Play by ear. Free time for anyone not watching the show.</p></div></li><li class="it t-opt"><div class="when"><span class="t">4:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">House of Dancing Water<span class="pill p-opt">Optional</span></p><p class="det">4:30pm show at City of Dreams. Check who is keen so tickets can be bought.</p><p class="links"><a href="https://www.klook.com/en-SG/activity/90-the-house-of-dancing-water-macau/" target="_blank" rel="noopener">Tickets on Klook<span aria-hidden="true"> ↗</span></a></p></div></li><li class="it t-booked"><div class="when"><span class="t">6:30pm</span><span class="e">to ~8pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Dinner at Beijing Kitchen<span class="pill p-booked">Booked 6:30pm</span></p><p class="det">City of Dreams, table for 7. Mum brings Alisa straight to the restaurant and orders food first.</p><p class="links"><a href="https://www.cityofdreamsmacau.com/assets/public/2026-09/BJKMenu_renew_SEP_compressed.pdf" target="_blank" rel="noopener">Menu (PDF)<span aria-hidden="true"> ↗</span></a></p></div></li><li class="it t-free"><div class="when"><span class="t">From ~8pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Evening free</p><p class="det">Back to the hotel</p></div></li></ol>
+  </div>
+</section>
+<section class="day" id="day3" data-date="2026-12-24">
+  <div class="wrap">
+    <div class="dayhead">
+      <div class="plaque"><span class="zh" lang="zh-Hant">第三天 · 12月24日 星期四</span><span class="pt">Day 3 · Thursday 24 December</span></div>
+      <span class="xmas">Christmas Eve</span><span class="today" hidden>Today</span>
+    </div>
+    <h2>Taipa Village and the Venetian</h2>
+    <p class="daynote">Congee and Taipa Village in the morning, Venetian shopping in the afternoon, cable car after dinner.</p>
+    <div class="freebox"><h3>Free time today</h3><ul><li><b>~1:30–2:30pm</b><span>Free time in Taipa Village</span></li><li><b>~2:45–5:45pm</b><span>Shopping at the Venetian (part 1)</span></li><li><b>From ~8:45pm</b><span>Christmas Eve evening free</span></li></ul></div>
+    
+    <ol class="tl"><li class="it t-plan"><div class="when"><span class="t">~8:30am</span><span class="e">to ~9:30am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Breakfast at Seng Kei Congee</p><p class="det">Taipa Mei Keng branch, 6 min from the hotel</p><p class="addr" lang="zh-Hant">氹仔布拉干薩街47號D 美景花園地下AZ舖</p></div></li><li class="it t-plan"><div class="when"><span class="t">~9:30am</span><span class="e">to ~12:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Walk around Taipa Village</p><p class="det">9 min walk or 5 min drive from breakfast</p><p class="links"><a href="https://www.taipavillagemacau.com/getting-here/" target="_blank" rel="noopener">Getting there<span aria-hidden="true"> ↗</span></a></p></div></li><li class="it t-plan"><div class="when"><span class="t">~12:30pm</span><span class="e">to ~1:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Lunch in Taipa</p><p class="det">Sei Kee Cafe or Taipa Food Street</p><p class="links"><a href="https://www.taipavillagemacau.com/directory/sei-kee-cafe/" target="_blank" rel="noopener">Sei Kee Cafe<span aria-hidden="true"> ↗</span></a></p></div></li><li class="it t-free"><div class="when"><span class="t">~1:30pm</span><span class="e">to 2:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Free time in Taipa Village</p><p class="det">Own pace. Regroup to leave at 2:30pm.</p></div></li><li class="it t-travel"><div class="when"><span class="t">2:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Leave for the Venetian</p><p class="det">11 min walk or 5 min drive</p></div></li><li class="it t-free"><div class="when"><span class="t">~2:45pm</span><span class="e">to 5:45pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Shopping at the Venetian (part 1)</p><p class="det">Or book a massage at V Spa</p><p class="links"><a href="https://www.klook.com/en-SG/activity/123340-venetian-macao-v-spa/" target="_blank" rel="noopener">V Spa on Klook<span aria-hidden="true"> ↗</span></a></p></div></li><li class="it t-travel"><div class="when"><span class="t">5:45pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Leave for Lisboa Bistrô</p><p class="det">6 min drive</p></div></li><li class="it t-booked"><div class="when"><span class="t">6pm</span><span class="e">to ~7:45pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Dinner at Lisboa Bistrô<span class="pill p-booked">Booked 6pm</span></p><p class="det">Grand Lisboa Palace, table for 7</p><p class="links"><a href="https://assets.sjmresorts.com/2026-07/glp-lisboa-bistro-a-la-carte-menu-260710-160863e9.pdf" target="_blank" rel="noopener">Menu (PDF)<span aria-hidden="true"> ↗</span></a></p></div></li><li class="it t-plan"><div class="when"><span class="t">8pm</span><span class="e">to ~8:45pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Cable car at Wynn Palace</p><p class="det">2 min drive from dinner. Runs 4pm to midnight.</p></div></li><li class="it t-free"><div class="when"><span class="t">From ~8:45pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Christmas Eve evening free</p></div></li></ol>
+  </div>
+</section>
+<section class="day" id="day4" data-date="2026-12-25">
+  <div class="wrap">
+    <div class="dayhead">
+      <div class="plaque"><span class="zh" lang="zh-Hant">第四天 · 12月25日 星期五</span><span class="pt">Day 4 · Friday 25 December</span></div>
+      <span class="xmas">Christmas Day</span><span class="today" hidden>Today</span>
+    </div>
+    <h2>A-Ma Temple, Tap Seac market and hotpot</h2>
+    <p class="daynote">Temple in the morning, the Christmas market at Tap Seac, Venetian shopping, then the hotpot booking.</p>
+    <div class="freebox"><h3>Free time today</h3><ul><li><b>~11:30am–2pm</b><span>Free time</span></li><li><b>~4:15–5:45pm</b><span>Shopping at the Venetian (part 2)</span></li><li><b>From ~7:30pm</b><span>Christmas evening free</span></li></ul></div>
+    <p class="flag"><b>Heads-up.</b> Tap Seac&#x27;s Christmas market only opens at 2pm. With the current order there is an open gap from about 11:30am, and lunch at the Venetian lands around 3:15pm.</p>
+    <ol class="tl"><li class="it t-plan"><div class="when"><span class="t">~8am</span><span class="e">to ~9:15am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Breakfast at Studio City</p></div></li><li class="it t-travel"><div class="when"><span class="t">~9:15am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Drive to A-Ma Temple</p><p class="det">16 min</p></div></li><li class="it t-plan"><div class="when"><span class="t">~9:30am</span><span class="e">to ~11:30am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">A-Ma Cultural Village and Temple</p><p class="links"><a href="https://www.macaotourism.gov.mo/en/sightseeing/temples/a-ma-temple" target="_blank" rel="noopener">Macao Tourism guide<span aria-hidden="true"> ↗</span></a></p></div></li><li class="it t-free"><div class="when"><span class="t">~11:30am</span><span class="e">to 2pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Free time</p><p class="det">Open gap before the Tap Seac market opens. A good window for an earlier lunch.</p></div></li><li class="it t-plan"><div class="when"><span class="t">2pm</span><span class="e">to ~3pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Christmas market at Tap Seac Square</p><p class="det">11 min drive from the temple. Open 2pm to midnight.</p></div></li><li class="it t-travel"><div class="when"><span class="t">~3pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Drive to the Venetian</p><p class="det">17 min</p></div></li><li class="it t-plan"><div class="when"><span class="t">~3:20pm</span><span class="e">to ~4:15pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Lunch at the Venetian</p><p class="det">A late lunch if the order stays as planned</p></div></li><li class="it t-free"><div class="when"><span class="t">~4:15pm</span><span class="e">to 5:45pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Shopping at the Venetian (part 2)</p></div></li><li class="it t-travel"><div class="when"><span class="t">~5:45pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Head to Hao Guo at MGM Cotai</p><p class="det">6 min drive</p></div></li><li class="it t-booked"><div class="when"><span class="t">6pm</span><span class="e">to ~7:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Hotpot dinner at Hao Guo 好鍋<span class="pill p-booked">Booked 6pm</span><span class="pill p-warn">Do not cancel</span></p><p class="det">MGM Cotai. Reserved with a credit card, so please do not cancel.</p><p class="links"><a href="https://www.mgm.mo/en/dining/mgm-cotai/hao-guo" target="_blank" rel="noopener">Restaurant page<span aria-hidden="true"> ↗</span></a></p></div></li><li class="it t-free"><div class="when"><span class="t">From ~7:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Christmas evening free</p></div></li><li class="it t-opt"><div class="when"><span class="t">~7:45pm</span><span class="e">to ~8:30pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Kun Iam Ecumenical Centre<span class="pill p-opt">Play by ear</span></p><p class="det">Night view of the bronze Goddess of Mercy. 14 min from Hao Guo, then 11 min back to the hotel.</p></div></li></ol>
+  </div>
+</section>
+<section class="day" id="day5" data-date="2026-12-26">
+  <div class="wrap">
+    <div class="dayhead">
+      <div class="plaque"><span class="zh" lang="zh-Hant">第五天 · 12月26日 星期六</span><span class="pt">Day 5 · Saturday 26 December</span></div>
+      <span class="today" hidden>Today</span>
+    </div>
+    <h2>Flying home</h2>
+    <p class="daynote">Two groups on two different flights.</p>
+    <div class="freebox"><h3>Free time today</h3><ul><li class="none"><b>None</b><span>Theresa &amp; Bin Hao: airport transfer at 5:45am</span></li><li><b>~7:30–10am</b><span>Breakfast, pack and check out <span class="who">(Alvin, Gwen, Alisa, Mum &amp; Dad)</span></span></li><li><b>12:30–3pm</b><span>Shop and eat at HK airport <span class="who">(Alvin, Gwen, Alisa, Mum &amp; Dad)</span></span></li></ul></div>
+    
+    <div class="groups"><div class="group"><h3>Theresa &amp; Bin Hao</h3><ol class="tl"><li class="it t-travel"><div class="when"><span class="t">5:45am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Transfer to Hong Kong airport</p><p class="det">Early start</p></div></li><li class="it t-booked"><div class="when"><span class="t">9:05am</span><span class="e">to 1:05pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Fly Hong Kong → Singapore<span class="pill p-booked">Flight</span></p><p class="det">SQ899, lands 1:05pm</p></div></li></ol></div><div class="group"><h3>Alvin, Gwen, Alisa, Mum &amp; Dad</h3><ol class="tl"><li class="it t-free"><div class="when"><span class="t">~7:30am</span><span class="e">to 10am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Breakfast, pack and check out</p><p class="det">Morning at your own pace</p></div></li><li class="it t-travel"><div class="when"><span class="t">10am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Transfer to Hong Kong airport</p></div></li><li class="it t-travel"><div class="when"><span class="t">11:30am</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Check in at the airport</p></div></li><li class="it t-free"><div class="when"><span class="t">12:30pm</span><span class="e">to 3pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><span class="kind">Free time</span><p class="ttl">Shop and eat at HK airport</p></div></li><li class="it t-travel"><div class="when"><span class="t">~3pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Go to the gate and board</p></div></li><li class="it t-booked"><div class="when"><span class="t">3:45pm</span><span class="e">to 7:50pm</span></div><div class="dot" aria-hidden="true"></div><div class="what"><p class="ttl">Fly Hong Kong → Singapore<span class="pill p-booked">Flight</span></p><p class="det">SQ893, lands 7:50pm</p></div></li></ol></div></div>
+  </div>
+</section>
+
+<section id="bookings" class="day">
+  <div class="wrap">
+    <h2 class="sec-h">Bookings</h2>
+    <p class="sec-intro">Every dinner is booked for 7.</p>
+    <div class="rows">
+      <h3>Dinners</h3>
+      <div class="row"><div class="dt">Tue 22 Dec<span>5:30pm</span></div><div><p class="nm">North Palace</p><p class="sub">The Londoner Macao</p></div></div>
+      <div class="row"><div class="dt">Wed 23 Dec<span>6:30pm</span></div><div><p class="nm">Beijing Kitchen</p><p class="sub">City of Dreams. Mum and Alisa go ahead and order first.</p></div></div>
+      <div class="row"><div class="dt">Thu 24 Dec<span>6:00pm</span></div><div><p class="nm">Lisboa Bistrô</p><p class="sub">Grand Lisboa Palace</p></div></div>
+      <div class="row"><div class="dt">Fri 25 Dec<span>6:00pm</span></div><div><p class="nm">Hao Guo 好鍋 <span class="pill p-warn">Do not cancel</span></p><p class="sub">MGM Cotai. Credit-card reservation. Tel <span class="tel">+853 8806 2368</span></p></div></div>
+      <h3>Flights</h3>
+      <div class="row"><div class="dt">Tue 22 Dec<span>SQ874</span></div><div><p class="nm">Singapore 7:30am → Hong Kong 11:20am</p><p class="sub">Everyone</p></div></div>
+      <div class="row"><div class="dt">Sat 26 Dec<span>SQ899</span></div><div><p class="nm">Hong Kong 9:05am → Singapore 1:05pm</p><p class="sub">Theresa and Bin Hao. Transfer from Macau at 5:45am.</p></div></div>
+      <div class="row"><div class="dt">Sat 26 Dec<span>SQ893</span></div><div><p class="nm">Hong Kong 3:45pm → Singapore 7:50pm</p><p class="sub">Alvin, Gwen, Alisa, Mum and Dad. Transfer from Macau at 10am.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="todo" class="day">
+  <div class="wrap">
+    <h2 class="sec-h">Still to decide</h2>
+    <ol class="todo">
+      <li><div><b>Who wants to watch House of Dancing Water?</b><p>Wed 23 Dec, 4:30pm at City of Dreams. Tickets need buying once we know numbers. <a href="https://www.klook.com/en-SG/activity/90-the-house-of-dancing-water-macau/" target="_blank" rel="noopener">Klook page ↗</a></p></div></li>
+      <li><div><b>Lunch on 23 Dec: Chinese or Portuguese?</b><p>Near Senado Square. Mum's Portuguese pick is listed under "Ideas" below.</p></div></li>
+      <li><div><b>Lunch timing on Christmas Day</b><p>Tap Seac's market opens at 2pm, so with the current order lunch at the Venetian lands around 3:15pm. We could eat earlier, in the gap after A-Ma Temple.</p></div></li>
+      <li><div><b>Hotel move on 24 Dec?</b><p>Mum's earlier draft has a check-out from Studio City and check-in at the W Hotel on the morning of 24 Dec. If that is still happening, allow about 45 minutes before breakfast in Taipa.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="ideas" class="day">
+  <div class="wrap">
+    <h2 class="sec-h">Ideas for free time</h2>
+    <p class="sec-intro">From the planning sheets, for anyone with time to spare.</p>
+    <div class="ideas">
+      <div><b>Coloane Village</b><p>About 4 min drive from the hotel. A quiet old fishing village with pastel Portuguese buildings and a waterfront promenade.</p></div>
+      <div><b>Gondola ride at the Venetian</b><p>Indoor canals modelled on Venice. Easy to fit into either Venetian shopping slot.</p></div>
+      <div><b>V Spa massage</b><p>At the Venetian, an option during shopping on 24 Dec. <a href="https://www.klook.com/en-SG/activity/123340-venetian-macao-v-spa/" target="_blank" rel="noopener">Klook ↗</a></p></div>
+      <div><b>Eiffel Tower observation deck</b><p>At The Parisian Macao, next to the Venetian.</p></div>
+      <div><b>Chan Kee Roasted Goose</b><p>At Studio City. Mum's note: can eat anytime.</p></div>
+      <div><b>Amália Portuguese Restaurant</b><p>Mum's Portuguese pick. R/C, Edf. Chun Veng Kock, 300 Rua Direita Carlos Eugénio. Tel <span class="tel">+853 2826 2628</span></p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<button class="chat-fab" id="chat-open" type="button" aria-controls="chat" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+  <span>Ask about the trip</span>
+</button>
+<div class="chat" id="chat" role="dialog" aria-label="Trip assistant" hidden>
+  <div class="chat-head">
+    <div><b>Trip assistant</b><span>Answers from our itinerary · powered by OpenAI</span></div>
+    <button class="chat-x" id="chat-close" type="button" aria-label="Close">×</button>
+  </div>
+  <div class="chat-log" id="chat-log" aria-live="polite">
+    <div class="chat-start" id="chat-start">
+      <p>Ask anything about the trip: times, places, bookings or when we're free. English or Chinese both work.</p>
+      <div class="chat-sugg">
+        <button type="button" data-q="When are we free on Christmas Day?">When are we free on Christmas Day?</button>
+        <button type="button" data-q="What's the plan for tomorrow?">What's the plan for tomorrow?</button>
+        <button type="button" data-q="Where is dinner on 24 Dec, and what time?">Where is dinner on 24 Dec?</button>
+      </div>
+    </div>
+  </div>
+  <form class="chat-code" id="chat-code" hidden>
+    <label for="chat-code-input" id="chat-code-msg">Enter the family code to use the assistant</label>
+    <div><input id="chat-code-input" type="password" autocomplete="off" required><button class="chat-send" type="submit">OK</button></div>
+  </form>
+  <form class="chat-form" id="chat-form">
+    <textarea id="chat-input" rows="1" maxlength="1000" placeholder="Ask a question…" aria-label="Your question"></textarea>
+    <button class="chat-send" id="chat-send" type="submit">Send</button>
+  </form>
+</div>
+
+
+<script>
+(function () {
+  try {
+    var now = new Date(Date.now() + 8 * 3600e3); // Macau time (UTC+8)
+    var y = now.getUTCFullYear(), mo = now.getUTCMonth(), d = now.getUTCDate();
+    var today = Date.UTC(y, mo, d), start = Date.UTC(2026, 11, 22), end = Date.UTC(2026, 11, 26);
+    var diff = Math.round((start - today) / 864e5);
+    var el = document.getElementById("countdown");
+    if (diff > 1) el.textContent = diff + " days to go";
+    else if (diff === 1) el.textContent = "We fly tomorrow";
+    else if (today <= end) {
+      var n = Math.round((today - start) / 864e5) + 1;
+      el.textContent = "Today is day " + n + " of 5";
+      var sec = document.getElementById("day" + n);
+      if (sec) {
+        var b = sec.querySelector(".today"); if (b) b.hidden = false;
+        var chip = document.querySelector('.daynav a[data-day="day' + n + '"]');
+        if (chip) { chip.classList.add("is-today"); chip.setAttribute("aria-current", "date"); }
+      }
+    }
+  } catch (e) {}
+})();
+
+(function () {
+  var fab = document.getElementById("chat-open"), panel = document.getElementById("chat");
+  if (!fab || !panel) return;
+  var log = document.getElementById("chat-log"), start = document.getElementById("chat-start");
+  var form = document.getElementById("chat-form"), input = document.getElementById("chat-input"), send = document.getElementById("chat-send");
+  var codeForm = document.getElementById("chat-code"), codeInput = document.getElementById("chat-code-input"), codeMsg = document.getElementById("chat-code-msg");
+  var history = [], busy = false, pending = null, code = "";
+  try { code = localStorage.getItem("tripCode") || ""; } catch (e) {}
+
+  function openChat() { panel.hidden = false; fab.setAttribute("aria-expanded", "true"); document.documentElement.classList.add("chat-on"); setTimeout(function () { (codeForm.hidden ? input : codeInput).focus(); }, 30); }
+  function closeChat() { panel.hidden = true; fab.setAttribute("aria-expanded", "false"); document.documentElement.classList.remove("chat-on"); fab.focus(); }
+  fab.addEventListener("click", function () { panel.hidden ? openChat() : closeChat(); });
+  document.getElementById("chat-close").addEventListener("click", closeChat);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) closeChat(); });
+
+  function tidy(t) { return t.replace(/\*\*(.+?)\*\*/g, "$1").replace(/^#{1,6}\s*/gm, "").trim(); }
+  function bubble(role, text, extra) {
+    var d = document.createElement("div");
+    d.className = "msg " + role + (extra ? " " + extra : "");
+    d.textContent = role === "assistant" ? tidy(text) : text;
+    log.appendChild(d); log.scrollTop = log.scrollHeight;
+    return d;
+  }
+  function setBusy(b) { busy = b; send.disabled = b; }
+
+  function ask(q) {
+    if (busy || !q) return;
+    setBusy(true);
+    start.hidden = true;
+    history.push({ role: "user", content: q });
+    var mine = bubble("user", q), wait = bubble("assistant", "Thinking…", "typing");
+    fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history.slice(-12), code: code }) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, body: j }; }); })
+      .then(function (res) {
+        wait.remove();
+        if (res.status === 401) {
+          history.pop(); mine.remove(); pending = q;
+          codeMsg.textContent = code ? "That code didn't work. Try again." : "Enter the family code to use the assistant";
+          codeForm.hidden = false; codeInput.value = ""; codeInput.focus();
+          if (!log.querySelector(".msg")) start.hidden = false;
+          return;
+        }
+        if (res.status !== 200 || !res.body.reply) {
+          history.pop();
+          bubble("assistant", res.body.error || "Something went wrong. Please try again.", "err");
+          return;
+        }
+        history.push({ role: "assistant", content: res.body.reply });
+        bubble("assistant", res.body.reply);
+      })
+      .catch(function () { wait.remove(); history.pop(); bubble("assistant", "Couldn't reach the assistant. Check your connection and try again.", "err"); })
+      .then(function () { setBusy(false); if (codeForm.hidden) input.focus(); });
+  }
+
+  function grow() { input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 120) + "px"; }
+  input.addEventListener("input", grow);
+  input.addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event("submit")); } });
+  form.addEventListener("submit", function (e) { e.preventDefault(); var q = input.value.trim(); if (!q || busy) return; input.value = ""; grow(); ask(q); });
+  codeForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    code = codeInput.value.trim(); if (!code) return;
+    try { localStorage.setItem("tripCode", code); } catch (err) {}
+    codeForm.hidden = true;
+    var q = pending; pending = null; ask(q);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".chat-sugg button"), function (b) {
+    b.addEventListener("click", function () { ask(b.getAttribute("data-q")); });
+  });
+})();
+</script>
+
+</body>
+</html>
